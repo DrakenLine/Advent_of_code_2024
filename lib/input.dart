@@ -1,3 +1,5 @@
+import 'package:advent_of_code_2024/utils.dart';
+
 class Input {
   final String value = """
 80784   47731
@@ -1014,15 +1016,7 @@ class Input {
   });
 
   void sort() {
-    final whitespaceRE = RegExp(r"\s+");
-    List<int> convert = value
-        .trim()
-        .replaceAll(whitespaceRE, " ")
-        .replaceAll(" ", ", ")
-        .split(',')
-        .map<int>((e) {
-      return int.parse(e);
-    }).toList();
+    List<int> convert = Utils.stringToList(value);
 
     for (var i = 0; i < convert.length; i++) {
       if (i.isEven) leftList.add(convert[i]);
