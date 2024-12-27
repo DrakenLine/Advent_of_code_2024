@@ -1020,7 +1020,6 @@ class Report {
         if (checkAdjacentLevels(copyReport) &&
             isSortedWithoutDuplicates(copyReport)) {
           safeReports += 1;
-          print("safe report : $report");
           break;
         } else {
           copyReport = List.from(report);

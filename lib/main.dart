@@ -1,5 +1,4 @@
-import 'package:advent_of_code_2024/input.dart';
-import 'package:advent_of_code_2024/report.dart';
+import 'package:advent_of_code_2024/dayThree/multiplication.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -32,20 +31,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Input input = Input(
-    leftList: [],
-    rightList: [],
-    totalDistance: 0,
-    similarityScore: 0,
-  );
-
-  Report report = Report(safeReports: 0);
+  Multiplication multiplication = Multiplication();
 
   @override
   void initState() {
     super.initState();
-    input.sort();
-    report.countSafeReports();
+    multiplication.calculateResult();
   }
 
   @override
@@ -60,17 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TextButton(
-              onPressed: () {
-                setState(() {
-                  input.calculateTotalDistance();
-                });
-              },
-              child: Text('calculate'),
-            ),
-            Text('Total distance : ${input.totalDistance}'),
-            Text('Similarity Score : ${input.similarityScore}'),
-            Text('Safe report : ${report.safeReports}'),
+            Text('Result : ${multiplication.result}'),
           ],
         ),
       ),

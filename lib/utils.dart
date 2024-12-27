@@ -1,3 +1,5 @@
+import 'package:flutter/services.dart' show rootBundle;
+
 class Utils {
   static stringToList(String value) {
     final whitespaceRE = RegExp(r"\s+");
@@ -15,5 +17,15 @@ class Utils {
     return value.trim().split('\n').map<List<int>>((e) {
       return e.split(' ').map<int>((e) => int.parse(e)).toList();
     }).toList();
+  }
+
+  static Future<String> readTextFileFromAssets(String filePath) async {
+    try {
+      String fileContent = await rootBundle.loadString(filePath);
+      return fileContent;
+    } catch (e) {
+      print("Error reading file: $e");
+      return "Error loading file with path : $filePath";
+    }
   }
 }
