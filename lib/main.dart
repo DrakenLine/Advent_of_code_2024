@@ -1,4 +1,4 @@
-import 'package:advent_of_code_2024/dayThree/multiplication.dart';
+import 'package:advent_of_code_2024/day_four/xmas.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -31,12 +31,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Multiplication multiplication = Multiplication();
-
+  Xmas xmas = Xmas();
   @override
   void initState() {
     super.initState();
-    multiplication.calculateResult();
+    xmas.calculateAppearances();
   }
 
   @override
@@ -51,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Result : ${multiplication.result}'),
+            Text('Result : ${xmas.appearances}'),
           ],
         ),
       ),

@@ -1010,7 +1010,7 @@ class Report {
   });
 
   int countSafeReports() {
-    List<List<int>> convert = Utils.stringToEmbeddedList(value);
+    List<List<int>> convert = Utils.stringToEmbeddedIntList(value);
 
     for (var i = 0; i < convert.length; i++) {
       List<int> report = convert[i];

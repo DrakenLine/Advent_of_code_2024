@@ -13,9 +13,15 @@ class Utils {
     }).toList();
   }
 
-  static stringToEmbeddedList(String value) {
+  static stringToEmbeddedIntList(String value) {
     return value.trim().split('\n').map<List<int>>((e) {
       return e.split(' ').map<int>((e) => int.parse(e)).toList();
+    }).toList();
+  }
+
+  static stringToEmbeddedList(String value) {
+    return value.trim().split('\n').map<List<String>>((e) {
+      return e.split('').toList();
     }).toList();
   }
 
