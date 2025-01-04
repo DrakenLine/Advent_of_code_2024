@@ -150,90 +150,20 @@ ASAMXXXSMSSMMMSSSMSMXMSXMXMSMMMSMSSMMSMMSMXASMMSMSMXXXAAXXXXMMSMMSMMSMMXXXMASMMM
   calculateAppearances() {
     List<List<String>> input = Utils.stringToEmbeddedList(value);
 
-//     List<List<String>> input = Utils.stringToEmbeddedList("""MMMSXXMASM
-// MSAMXMSMSA
-// AMXSXMAAMM
-// MSAMASMSMX
-// XMASAMXAMM
-// XXAMMXXAMA
-// SMSMSASXSS
-// SAXAMASAAA
-// MAMMMXMMMM
-// MXMXAXMASX""");
-
     for (var i = 0; i < input.length; i++) {
       for (var y = 0; y < input[i].length; y++) {
         String letter = input[i][y];
-        if (letter == "X") {
-          // horizontal
-          if (isWithinBounds(y + 3, 0, input[i].length) &&
-              check([letter, input[i][y + 1], input[i][y + 2], input[i][y + 3]]
-                  .join())) {
-            appearances += 1;
-          }
-          // horizontal backward
-          if (isWithinBounds(y - 3, 0, input[i].length) &&
-              check([letter, input[i][y - 1], input[i][y - 2], input[i][y - 3]]
-                  .join())) {
-            appearances += 1;
-          }
-          // vertical
-          if (isWithinBounds(i + 3, 0, input.length) &&
-              check([letter, input[i + 1][y], input[i + 2][y], input[i + 3][y]]
-                  .join())) {
-            appearances += 1;
-          }
-          // vertical backward
-          if (isWithinBounds(i - 3, 0, input.length) &&
-              check([letter, input[i - 1][y], input[i - 2][y], input[i - 3][y]]
-                  .join())) {
-            appearances += 1;
-          }
-          //diagonals
+        if (letter == "A") {
+          if (isWithinBounds(i + 1, 0, input.length) &&
+              isWithinBounds(i - 1, 0, input.length) &&
+              isWithinBounds(y + 1, 0, input.length) &&
+              isWithinBounds(y - 1, 0, input.length)) {
+            String firstDiagonal =
+                [input[i + 1][y - 1], letter, input[i - 1][y + 1]].join();
+            String secondDiagonal =
+                [input[i - 1][y - 1], letter, input[i + 1][y + 1]].join();
 
-          if (isWithinBounds(i + 3, 0, input.length) &&
-              isWithinBounds(y + 3, 0, input.length)) {
-            if (check([
-              letter,
-              input[i + 1][y + 1],
-              input[i + 2][y + 2],
-              input[i + 3][y + 3]
-            ].join())) {
-              appearances += 1;
-            }
-          }
-          if (isWithinBounds(i - 3, 0, input.length) &&
-              isWithinBounds(y - 3, 0, input.length)) {
-            if (check([
-              letter,
-              input[i - 1][y - 1],
-              input[i - 2][y - 2],
-              input[i - 3][y - 3]
-            ].join())) {
-              appearances += 1;
-            }
-          }
-
-          if (isWithinBounds(i - 3, 0, input.length) &&
-              isWithinBounds(y + 3, 0, input.length)) {
-            if (check([
-              letter,
-              input[i - 1][y + 1],
-              input[i - 2][y + 2],
-              input[i - 3][y + 3]
-            ].join())) {
-              appearances += 1;
-            }
-          }
-
-          if (isWithinBounds(i + 3, 0, input.length) &&
-              isWithinBounds(y - 3, 0, input.length)) {
-            if (check([
-              letter,
-              input[i + 1][y - 1],
-              input[i + 2][y - 2],
-              input[i + 3][y - 3]
-            ].join())) {
+            if (check(firstDiagonal) && check(secondDiagonal)) {
               appearances += 1;
             }
           }
@@ -247,7 +177,7 @@ ASAMXXXSMSSMMMSSSMSMXMSXMXMSMMMSMSSMMSMMSMXASMMSMSMXXXAAXXXXMMSMMSMMSMMXXXMASMMM
   }
 
   bool check(String v) {
-    if (v == "XMAS") return true;
+    if (v == "MAS" || v == "SAM") return true;
     return false;
   }
 }
