@@ -1,4 +1,4 @@
-import 'package:advent_of_code_2024/day_four/xmas.dart';
+import 'package:advent_of_code_2024/day_five/sleigh_launch_safety_manual.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -31,11 +31,13 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Xmas xmas = Xmas();
+  SleighLaunchSafetyManual sleighLaunchSafetyManual =
+      SleighLaunchSafetyManual();
+
   @override
   void initState() {
     super.initState();
-    xmas.calculateAppearances();
+    sleighLaunchSafetyManual.calculateTotalMiddlePageNumber();
   }
 
   @override
@@ -50,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Result : ${xmas.appearances}'),
+            Text('Result : ${sleighLaunchSafetyManual.totalMiddlePageNumber}'),
           ],
         ),
       ),
